@@ -2,7 +2,6 @@ package com.codingshuttle.youtube.LearningRESTAPIs.controller;
 
 import com.codingshuttle.youtube.LearningRESTAPIs.dto.StudentDto;
 import com.codingshuttle.youtube.LearningRESTAPIs.entity.Student;
-import com.codingshuttle.youtube.LearningRESTAPIs.repository.StudentRepository;
 import com.codingshuttle.youtube.LearningRESTAPIs.service.StudentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,7 @@ public class StudentController {
 
      @GetMapping("/student-list")
       public List<StudentDto> getStudentList() {
-        return studentService.getAllStudnt();
+        return studentService.getAllStudent();
      }
 
     @PostMapping("/upload")
