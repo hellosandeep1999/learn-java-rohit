@@ -19,7 +19,7 @@ public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
 
     @Override
-    public List<StudentDto> getAllStudnt() {
+    public List<StudentDto> getAllStudent() {
         List<Student> students = studentRepository.findAll();
         return students.stream()
                 .map(s -> new StudentDto(s.getId(), s.getName(), s.getEmail()))

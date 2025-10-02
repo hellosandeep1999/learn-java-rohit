@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;   // ✅ add this
 import java.util.List;
 
 public interface StudentService {
-    List<StudentDto> getAllStudnt();
+    List<StudentDto> getAllStudent();
     void saveExcelData(MultipartFile file);
 
     Student createStudent(Student student);
