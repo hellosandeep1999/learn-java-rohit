@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LearningRestapIsApplication {
-
+public class LearningRestApisApplication {
+// This is application class
 	public static void main(String[] args) {
-		SpringApplication.run(LearningRestapIsApplication.class, args);
+		SpringApplication.run(LearningRestApisApplication.class, args);
 	}
 
 }
