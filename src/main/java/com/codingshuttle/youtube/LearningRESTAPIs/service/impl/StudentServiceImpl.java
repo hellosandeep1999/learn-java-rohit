@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +42,22 @@ public class StudentServiceImpl implements StudentService {
 
     public Student createStudent(Student student) {
         return  studentRepository.save(student);
+    }
+
+    @Override
+    public Student updateStudent(Long id, Student newStudent) {
+        Optional<Student> existingStudent = studentRepository.findById(id);
+        if(existingStudent.isPresent()) {
+            Student existingStudentData = existingStudent.get();
+            existingStudentData.setName(newStudent.getName());
+            existingStudentData.setEmail(newStudent.getEmail());
+            return studentRepository.save(existingStudentData);
+        }
+        else{
+            throw new RuntimeException("Student not found:");
+        }
+
+
     }
 
 }

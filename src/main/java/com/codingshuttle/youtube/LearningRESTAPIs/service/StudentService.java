@@ -12,4 +12,6 @@ public interface StudentService {
     void saveExcelData(MultipartFile file);
 
     Student createStudent(Student student);
+
+    Student updateStudent(Long id, Student student);
 }
