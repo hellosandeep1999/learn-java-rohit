@@ -2,6 +2,7 @@ package com.codingshuttle.youtube.LearningRESTAPIs.service.impl;
 
 import com.codingshuttle.youtube.LearningRESTAPIs.dto.StudentDto;
 import com.codingshuttle.youtube.LearningRESTAPIs.entity.Student;
+import com.codingshuttle.youtube.LearningRESTAPIs.exception.StudentNotFoundException;
 import com.codingshuttle.youtube.LearningRESTAPIs.helper.ExcelHelper;
 import com.codingshuttle.youtube.LearningRESTAPIs.repository.StudentRepository;
 import com.codingshuttle.youtube.LearningRESTAPIs.service.StudentService;
@@ -45,19 +46,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student updateStudent(Long id, Student newStudent) {
-        Optional<Student> existingStudent = studentRepository.findById(id);
-        if(existingStudent.isPresent()) {
-            Student existingStudentData = existingStudent.get();
-            existingStudentData.setName(newStudent.getName());
-            existingStudentData.setEmail(newStudent.getEmail());
-            return studentRepository.save(existingStudentData);
-        }
-        else{
-            throw new RuntimeException("Student not found:");
-        }
+    public Student updateStudent(Student newStudent) {
+       if(newStudent.getId() == null) {
+           throw new IllegalArgumentException("Please provide student id in request body");
+       }
+        Student existingStudent = studentRepository.findById(newStudent.getId())
+                .orElseThrow(() -> new StudentNotFoundException("Student not found with ID: " + newStudent.getId()));
 
+        existingStudent.setName(newStudent.getName());
+        existingStudent.setEmail(newStudent.getEmail());
 
+        return studentRepository.save(existingStudent);
     }
 
 }
