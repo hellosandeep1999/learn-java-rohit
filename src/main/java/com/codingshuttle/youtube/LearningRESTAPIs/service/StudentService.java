@@ -14,4 +14,7 @@ public interface StudentService {
     Student createStudent(Student student);
 
     Student updateStudent(Student student);
+
+    Student getStudentByName(String name);
+
 }
