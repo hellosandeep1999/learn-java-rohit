@@ -20,10 +20,16 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-     @GetMapping("/student-list")
-      public List<StudentDto> getStudentList() {
-        return studentService.getAllStudent();
-     }
+    @GetMapping("/student-list")
+    public ResponseEntity<?> getStudentList(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir
+    ) {
+        return ResponseEntity.ok(studentService.getAllStudent(page, size, sortBy, sortDir));
+    }
+
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
