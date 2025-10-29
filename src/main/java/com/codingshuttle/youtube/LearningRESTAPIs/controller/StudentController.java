@@ -41,4 +41,10 @@ public class StudentController {
         return studentService.updateStudent(student);
     }
 
+    @GetMapping("/student")
+    public Student getStudentByName(@RequestParam String name) {
+        return studentService.getStudentByName(name);
+    }
+
+
 }

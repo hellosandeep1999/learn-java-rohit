@@ -59,4 +59,11 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.save(existingStudent);
     }
 
+    @Override
+    public Student getStudentByName(String name) {
+        return studentRepository.findFirstByName(name)
+                .orElseThrow(() -> new StudentNotFoundException("Student not found with name: " + name));
+    }
+
+
 }
