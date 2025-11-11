@@ -1,18 +1,26 @@
 package com.codingshuttle.youtube.LearningRESTAPIs.practices;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-class ReverseFruits {
+public class ReverseFruits {
 
-    void reverseFruits(String[] fruits) {
-        if (fruits.length == 0 || (fruits.length == 1 && fruits[0].trim().isEmpty())) {
+    private final List<String> fruits;
+
+    public ReverseFruits(List<String> fruits) {
+        this.fruits = fruits;
+    }
+
+    void reverseFruits() {
+        if (fruits == null || fruits.isEmpty()) {
             System.out.println("Please enter some fruit names.");
             return;
         }
 
-        System.out.println("Reversed fruits names:");
+        System.out.println("Reversed fruit names:");
         for (String fruit : fruits) {
-            String tempFruit = new StringBuilder(fruit.trim()).reverse().toString();
+            String tempFruit = new StringBuilder(fruit).reverse().toString();
             System.out.println(tempFruit);
         }
     }
@@ -20,12 +28,24 @@ class ReverseFruits {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Please enter fruit names:");
-        String fruitsName = sc.nextLine();
+        List<String> fruitsList = new ArrayList<>();
+        System.out.println("Enter fruits name: ");
+        String input = sc.nextLine().trim();
+        if (!input.isEmpty()) {
+            fruitsList.add(input);
+        }
 
-        String[] fruits = fruitsName.split(",");
-        ReverseFruits obj = new ReverseFruits();
-        obj.reverseFruits(fruits);
+        ReverseFruits obj = new ReverseFruits(fruitsList);
+        obj.reverseFruits();
     }
 }
 
+
+/*
+output ->
+
+Enter fruits name:
+apple, bananaa, mango
+Reversed fruit names:
+ognam ,aananab ,elppa
+*/

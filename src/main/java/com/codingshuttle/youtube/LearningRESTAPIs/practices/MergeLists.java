@@ -1,44 +1,67 @@
 package com.codingshuttle.youtube.LearningRESTAPIs.practices;
 
 import java.util.Scanner;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+class MergeLists {
 
-public class MergeLists {
-    void mergeLists(int[] List1, int[] List2) {
-        int[] List3 = new int[List1.length + List2.length];
-        int k = 0;
+    private final List<Integer> List1;
+    private final List<Integer> List2;
 
-        for (int j : List1) {
-            List3[k++] = j;
+    public MergeLists(List<Integer> List1, List<Integer> List2) {
+        this.List1 = List1;
+        this.List2 = List2;
+    }
+
+    void mergeLists() {
+        List1.addAll(List2);
+
+        System.out.println("Merged List: ");
+        for(int i : List1) {
+            System.out.print(i+ " ");
         }
-
-        for (int j : List2) {
-            List3[k++] = j;
-        }
-
-        System.out.println("Merged List: " + Arrays.toString(List3));
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        List<Integer> List1 = new ArrayList<>();
+        List<Integer> List2 = new ArrayList<>();
 
-        System.out.print("Enter size of first list: ");
+        System.out.println("Enter the size of the first list: ");
         int n1 = sc.nextInt();
-        int[] List1 = new int[n1];
-        System.out.println("Enter elements of first list:");
-        for (int i = 0; i < n1; i++) {
-            List1[i] = sc.nextInt();
-        }
-
-        System.out.print("Enter size of second list: ");
+        System.out.println("Enter the size of the second list: ");
         int n2 = sc.nextInt();
-        int[] List2 = new int[n2];
-        System.out.println("Enter elements of second list:");
-        for (int i = 0; i < n2; i++) {
-            List2[i] = sc.nextInt();
+
+        System.out.println("Enter elements in first list: ");
+        for(int i = 0; i< n1; i++) {
+            List1.add(sc.nextInt());
+        }
+        System.out.println("Enter elements in second list: ");
+        for(int i = 0 ; i< n2; i++) {
+            List2.add(sc.nextInt());
         }
 
-        MergeLists obj = new MergeLists();
-        obj.mergeLists(List1, List2);
+
+        MergeLists obj = new MergeLists(List1,List2);
+        obj.mergeLists();
     }
 }
+
+
+/*
+
+output ->
+
+Enter the size of the first list:
+5
+Enter the size of the second list:
+5
+Enter elements in first list:
+1 2 3 4 5
+Enter elements in second list:
+6 7 8 9 5
+Merged List:
+1 2 3 4 5 6 7 8 9 5
+
+
+ */
