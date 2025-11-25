@@ -17,12 +17,12 @@ public class GroupByLength {
 
         HashMap<Integer, List<String>> map = new HashMap<>();
 
-        for(String item1 : list1) {
+        list1.forEach(item1 -> {
             int len = item1.length();
 
             map.putIfAbsent(len, new ArrayList<>());
             map.get(len).add(item1);
-        }
+        });
 
         System.out.println(map);
     }

@@ -2,6 +2,7 @@ package com.codingshuttle.youtube.LearningRESTAPIs.practices;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ContactOperations {
     private final List<Contact> contacts;
@@ -28,14 +29,15 @@ public class ContactOperations {
 
     // Search a contact by name
     public void searchContact(String name) {
-        boolean found = false;
-        for (Contact contact : contacts) {
+        AtomicBoolean found = new AtomicBoolean(false);
+        contacts.forEach(contact -> {
             if (contact.getName().equalsIgnoreCase(name)) {
                 System.out.println("Contact found: " + contact);
-                found = true;
+                found.set(true);
             }
-        }
-        if (!found) {
+        });
+
+        if (!found.get()) {
             System.out.println("Contact not found.");
         }
     }

@@ -17,9 +17,7 @@ class MergeLists {
         List1.addAll(List2);
 
         System.out.println("Merged List: ");
-        for(int i : List1) {
-            System.out.print(i+ " ");
-        }
+        List1.forEach(i -> System.out.print(i+ " "));
     }
 
     public static void main(String[] args) {

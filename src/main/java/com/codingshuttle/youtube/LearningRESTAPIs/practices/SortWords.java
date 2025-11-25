@@ -14,9 +14,9 @@ public class SortWords {
         List1.sort((a, b) -> Integer.compare(a.length(), b.length()));
 
         System.out.println("List in sorted order: ");
-        for(String s1 : List1) {
+        List1.forEach(s1 ->{
             System.out.println(s1+ "\n");
-        }
+        });
     }
 
     public static void main(String[] args) {

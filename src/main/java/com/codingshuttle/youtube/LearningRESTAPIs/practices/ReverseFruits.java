@@ -19,10 +19,10 @@ public class ReverseFruits {
         }
 
         System.out.println("Reversed fruit names:");
-        for (String fruit : fruits) {
+        fruits.forEach(fruit -> {
             String tempFruit = new StringBuilder(fruit).reverse().toString();
             System.out.println(tempFruit);
-        }
+        });
     }
 
     public static void main(String[] args) {

@@ -25,9 +25,8 @@ class CheckPalindrome {
             return;
         }
         System.out.println("Palindrome strings are: ");
-        for(String s1 : List2) {
-            System.out.println(s1+ " ");
-        }
+
+        List2.forEach(s1 -> System.out.println(s1+ " "));
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
